@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, globalShortcut } = require("electron");
+const { app, BrowserWindow, ipcMain, globalShortcut, Menu } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const { execFile } = require("child_process");
@@ -85,6 +85,12 @@ if (!gotLock) {
     globalShortcut.register("CommandOrControl+Shift+S", () => {
       mainWindow.webContents.send("hotkey", "sync");
     });
+    globalShortcut.register("CommandOrControl+Shift+Q", () => {
+      app.quit();
+    });
+    globalShortcut.register("CommandOrControl+Shift+R", () => {
+      mainWindow.webContents.send("hotkey", "reset");
+    });
   }
 
   app.whenReady().then(() => {
@@ -127,6 +133,29 @@ if (!gotLock) {
 
   ipcMain.on("drag-end", () => {
     dragOffset = null;
+  });
+
+  ipcMain.handle("quit-app", () => {
+    app.quit();
+    return { ok: true };
+  });
+
+  ipcMain.handle("show-context-menu", () => {
+    if (!mainWindow) return;
+    const menu = Menu.buildFromTemplate([
+      {
+        label: "Reset counts to 0",
+        accelerator: "Cmd+Shift+R",
+        click: () => mainWindow.webContents.send("hotkey", "reset"),
+      },
+      { type: "separator" },
+      {
+        label: "Quit Sprout",
+        accelerator: "Cmd+Shift+Q",
+        click: () => app.quit(),
+      },
+    ]);
+    menu.popup({ window: mainWindow });
   });
 
   ipcMain.handle("load-progress", () => readData());

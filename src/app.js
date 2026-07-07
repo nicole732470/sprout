@@ -84,13 +84,13 @@ function updateUI(lastAction) {
   document.getElementById("coach-wrap").classList.toggle("hidden", !coach.show);
 }
 
-async function save() {
+async function save({ sync = true } = {}) {
   state = SproutStats.upsertToday(state);
   const svg = SproutStats.buildChartSvg(state.daily, state.goals);
   const report = SproutStats.buildReport(state);
   await window.sproutAPI.saveProgress(state);
   await window.sproutAPI.saveStats({ svg, report });
-  scheduleAutoSync();
+  if (sync) scheduleAutoSync();
 }
 
 function scheduleAutoSync() {
@@ -147,6 +147,21 @@ async function addApply() {
   await save();
 }
 
+async function resetAll() {
+  const weekStart = mondayOf(new Date());
+  const today = todayStr();
+  state = {
+    connects: { count: 0, weekStart },
+    applications: { count: 0, date: today },
+    goals: state?.goals || { connectsWeekly: 100, applicationsDaily: 50 },
+    history: [],
+    daily: [{ date: today, connects: 0, applications: 0 }],
+  };
+  updateUI();
+  await save();
+  showToast("Reset to 0");
+}
+
 async function syncGithub() {
   try {
     await save();
@@ -171,12 +186,13 @@ async function init() {
   if (!data.daily) data.daily = [];
   state = ensurePeriods(data);
   updateUI();
-  await save();
+  await save({ sync: false });
 
   window.sproutAPI.onHotkey((action) => {
     if (action === "connect") addConnect();
     if (action === "apply") addApply();
     if (action === "sync") syncGithub();
+    if (action === "reset") resetAll();
   });
 
   setInterval(() => {

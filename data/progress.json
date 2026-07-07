@@ -1,10 +1,10 @@
 {
   "connects": {
-    "count": 101,
+    "count": 0,
     "weekStart": "2026-07-06"
   },
   "applications": {
-    "count": 82,
+    "count": 0,
     "date": "2026-07-07"
   },
   "goals": {
@@ -15,8 +15,8 @@
   "daily": [
     {
       "date": "2026-07-07",
-      "connects": 101,
-      "applications": 82
+      "connects": 0,
+      "applications": 0
     }
   ]
 }

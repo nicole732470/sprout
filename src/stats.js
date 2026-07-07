@@ -15,6 +15,7 @@ const SproutStats = (() => {
       state.daily.push(row);
     }
     row.applications = state.applications.count;
+    row.connects = state.connects.count;
     state.daily.sort((a, b) => a.date.localeCompare(b.date));
     if (state.daily.length > 90) state.daily = state.daily.slice(-90);
     return state;
