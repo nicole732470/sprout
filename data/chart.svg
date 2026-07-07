@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="190" height="80" viewBox="0 0 190 80">
   <line x1="6" y1="64" x2="184" y2="64" stroke="#e8e4de" stroke-width="0.5"/>
-  <polyline points="6.0,61.8" fill="none" stroke="#d89020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="6.0,59.5" fill="none" stroke="#d89020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
   <polyline points="6.0,62.9" fill="none" stroke="#9b7ec8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 2"/>
   <text x="6" y="78" font-size="6" fill="#999" text-anchor="middle">07-07</text>
   <text x="186" y="8" font-size="6" fill="#d89020" text-anchor="end">投递</text>
