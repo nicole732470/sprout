@@ -1,0 +1,12 @@
+{
+  "name": "sprout",
+  "version": "1.0.0",
+  "description": "Desktop plant tracker for LinkedIn connects and job applications",
+  "main": "main.js",
+  "scripts": {
+    "start": "env -u ELECTRON_RUN_AS_NODE electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.2.1"
+  }
+}
