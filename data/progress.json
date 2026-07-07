@@ -1,16 +1,22 @@
 {
   "connects": {
-    "count": 0,
-    "weekStart": null
+    "count": 101,
+    "weekStart": "2026-07-06"
   },
   "applications": {
-    "count": 0,
-    "date": null
+    "count": 82,
+    "date": "2026-07-07"
   },
   "goals": {
     "connectsWeekly": 100,
     "applicationsDaily": 50
   },
   "history": [],
-  "daily": []
+  "daily": [
+    {
+      "date": "2026-07-07",
+      "connects": 101,
+      "applications": 82
+    }
+  ]
 }
