@@ -1,13 +1,13 @@
 # Sprout Stats
 
-_Auto-updated 2026-07-08 19:57 UTC_
+_Auto-updated 2026-07-08 20:05 UTC_
 
 ## Current period
 
 | Track | Period | Progress |
 |-------|--------|----------|
 | **CONNECT** | Week 2026-07-06 → 07-12 | **1 / 100** |
-| **APPLY** | 2026-07-08 | **41 / 50** |
+| **APPLY** | 2026-07-08 | **42 / 50** |
 
 CONNECT resets every **Monday**. APPLY resets every **midnight**.
 
@@ -15,9 +15,9 @@ CONNECT resets every **Monday**. APPLY resets every **midnight**.
 
 | Metric | Total |
 |--------|-------|
-| Applications | 54 |
+| Applications | 55 |
 | Connect adds (daily) | 1 |
-| Avg applications / day | 27.0 |
+| Avg applications / day | 27.5 |
 
 ## Trends
 
