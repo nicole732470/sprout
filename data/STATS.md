@@ -1,6 +1,6 @@
-# Sprout Stats
+# Super Mario Stats
 
-_Auto-updated 2026-07-09 21:23 UTC_
+_Auto-updated 2026-07-09 21:33 UTC_
 
 ## Current period
 
@@ -21,4 +21,4 @@ CONNECT resets every **Monday**. APPLY resets every **midnight**.
 
 ## Trends
 
-![Sprout trends](chart.svg)
+![Super Mario trends](chart.svg)

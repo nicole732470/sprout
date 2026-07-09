@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Render Sprout.app icon PNG + ICNS for macOS."""
+"""Render Super Mario desktop widget icon PNG + ICNS."""
 
 from __future__ import annotations
 
-import math
 import os
 import subprocess
 import sys
@@ -12,6 +11,7 @@ from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BUILD = os.path.join(ROOT, "build")
+ASSETS = os.path.join(ROOT, "assets")
 SIZE = 1024
 
 
@@ -21,19 +21,17 @@ def lerp(a: float, b: float, t: float) -> float:
 
 def sky_pixel(x: int, y: int) -> tuple[int, int, int]:
     t = y / SIZE
-    r = int(lerp(201, 244, t))
-    g = int(lerp(218, 247, t))
-    b = int(lerp(240, 250, t))
+    r = int(lerp(74, 168, t))
+    g = int(lerp(158, 220, t))
+    b = int(lerp(255, 255, t))
     return r, g, b
 
 
 def draw_cloud(draw: ImageDraw.ImageDraw, cx: int, cy: int, scale: float, fill: tuple[int, int, int, int]) -> None:
     for ox, oy, rx, ry in [
-        (0, 0, 70, 34),
-        (-58, 10, 48, 28),
-        (58, 8, 52, 30),
-        (-24, -16, 40, 26),
-        (30, -14, 44, 28),
+        (0, 0, 72, 34),
+        (-60, 10, 50, 28),
+        (60, 8, 54, 30),
     ]:
         draw.ellipse(
             (cx + ox - rx * scale, cy + oy - ry * scale, cx + ox + rx * scale, cy + oy + ry * scale),
@@ -41,21 +39,12 @@ def draw_cloud(draw: ImageDraw.ImageDraw, cx: int, cy: int, scale: float, fill: 
         )
 
 
-def draw_flag(draw: ImageDraw.ImageDraw, x: int, y: int) -> None:
-    draw.rectangle((x, y, x + 8, y + 92), fill=(210, 214, 220))
-    draw.rectangle((x - 2, y - 8, x + 12, y + 2), fill=(180, 186, 196))
-    draw.rectangle((x + 8, y + 4, x + 58, y + 34), fill=(34, 197, 94))
-    draw.rectangle((x + 8, y + 4, x + 58, y + 16), fill=(74, 222, 128))
-
-
-def draw_hero(draw: ImageDraw.ImageDraw, x: int, y: int, shirt: tuple[int, int, int], hat: tuple[int, int, int]) -> None:
-    draw.rectangle((x + 10, y + 8, x + 38, y + 22), fill=hat)
-    draw.rectangle((x + 12, y + 22, x + 36, y + 34), fill=(255, 214, 170))
-    draw.rectangle((x + 8, y + 34, x + 40, y + 58), fill=shirt)
-    draw.rectangle((x + 4, y + 36, x + 14, y + 52), fill=shirt)
-    draw.rectangle((x + 34, y + 36, x + 44, y + 52), fill=shirt)
-    draw.rectangle((x + 10, y + 58, x + 20, y + 72), fill=(55, 65, 81))
-    draw.rectangle((x + 28, y + 58, x + 38, y + 72), fill=(55, 65, 81))
+def paste_sprite(base: Image.Image, path: str, x: int, y: int, scale: float) -> None:
+    sprite = Image.open(path).convert("RGBA")
+    w = int(sprite.width * scale)
+    h = int(sprite.height * scale)
+    sprite = sprite.resize((w, h), Image.Resampling.NEAREST)
+    base.paste(sprite, (x, y), sprite)
 
 
 def render_icon() -> Image.Image:
@@ -67,28 +56,30 @@ def render_icon() -> Image.Image:
             px[x, y] = (r, g, b, 255)
 
     draw = ImageDraw.Draw(img, "RGBA")
-    draw_cloud(draw, 250, 220, 1.0, (255, 255, 255, 210))
-    draw_cloud(draw, 760, 280, 0.85, (255, 255, 255, 180))
-    draw_cloud(draw, 520, 170, 0.65, (255, 255, 255, 150))
+    draw_cloud(draw, 260, 210, 1.0, (255, 255, 255, 230))
+    draw_cloud(draw, 760, 260, 0.9, (255, 255, 255, 200))
+    draw_cloud(draw, 520, 150, 0.75, (255, 255, 255, 180))
 
-    ground_y = 700
-    for i in range(9):
-        gx = 170 + i * 78
-        draw.rounded_rectangle((gx, ground_y, gx + 70, ground_y + 28), radius=6, fill=(180, 83, 9))
-        draw.rectangle((gx + 4, ground_y + 4, gx + 34, ground_y + 24), fill=(217, 119, 6))
-        draw.rectangle((gx + 36, ground_y + 4, gx + 66, ground_y + 24), fill=(194, 65, 12))
+    ground_y = 690
+    for i in range(10):
+        gx = 120 + i * 82
+        draw.rectangle((gx, ground_y, gx + 74, ground_y + 30), fill=(194, 65, 12))
+        draw.rectangle((gx + 2, ground_y + 2, gx + 36, ground_y + 28), fill=(217, 119, 6))
+        draw.rectangle((gx + 38, ground_y + 2, gx + 72, ground_y + 28), fill=(180, 83, 9))
 
-    draw.rounded_rectangle((150, ground_y + 28, 874, ground_y + 44), radius=8, fill=(0, 0, 0, 35))
-    draw_hero(draw, 300, ground_y - 74, (34, 197, 94), (22, 163, 74))
-    draw_hero(draw, 560, ground_y - 74, (239, 68, 68), (220, 38, 38))
-    draw_flag(draw, 790, ground_y - 98)
+    draw.rounded_rectangle((110, ground_y + 30, 914, ground_y + 48), radius=10, fill=(0, 0, 0, 40))
 
-    # subtle sprout mark top-left for brand
-    draw.ellipse((118, 118, 178, 178), fill=(255, 255, 255, 220))
-    draw.polygon([(148, 132), (160, 168), (136, 168)], fill=(34, 197, 94))
-    draw.rectangle((152, 168, 158, 186), fill=(120, 113, 108))
+    paste_sprite(img, os.path.join(ASSETS, "luigi.png"), 250, ground_y - 150, 4.2)
+    paste_sprite(img, os.path.join(ASSETS, "mario.png"), 560, ground_y - 150, 4.2)
 
+    draw_flag(draw, 860, ground_y - 170)
     return img
+
+
+def draw_flag(draw: ImageDraw.ImageDraw, x: int, y: int) -> None:
+    draw.rectangle((x, y, x + 10, y + 110), fill=(220, 220, 220))
+    draw.rectangle((x + 10, y + 8, x + 72, y + 48), fill=(34, 197, 94))
+    draw.rectangle((x + 10, y + 8, x + 72, y + 24), fill=(74, 222, 128))
 
 
 def write_icns(png_path: str, icns_path: str) -> None:

@@ -4,12 +4,20 @@ const fs = require("fs");
 const { execFile } = require("child_process");
 
 function getRepoRoot() {
+  if (process.env.MARIO_REPO && fs.existsSync(process.env.MARIO_REPO)) {
+    return process.env.MARIO_REPO;
+  }
   if (process.env.SPROUT_REPO && fs.existsSync(process.env.SPROUT_REPO)) {
     return process.env.SPROUT_REPO;
   }
   if (!app.isPackaged) return __dirname;
-  const defaultRepo = path.join(app.getPath("home"), "Desktop", "APPLY", "sprout");
-  if (fs.existsSync(path.join(defaultRepo, ".git"))) return defaultRepo;
+  const candidates = [
+    path.join(app.getPath("home"), "Desktop", "APPLY", "super-mario"),
+    path.join(app.getPath("home"), "Desktop", "APPLY", "sprout"),
+  ];
+  for (const candidate of candidates) {
+    if (fs.existsSync(path.join(candidate, ".git"))) return candidate;
+  }
   return app.getPath("userData");
 }
 
@@ -163,7 +171,7 @@ if (!gotLock) {
       },
       { type: "separator" },
       {
-        label: "Quit Sprout",
+        label: "Quit Super Mario",
         accelerator: "Cmd+Shift+Q",
         click: () => app.quit(),
       },

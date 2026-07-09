@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-APP_NAME="Sprout.app"
+APP_NAME="Super Mario.app"
 ARCH="$(uname -m)"
 DIST_DIR="$ROOT/dist/mac-${ARCH}"
 SRC_APP="$DIST_DIR/$APP_NAME"

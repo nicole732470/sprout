@@ -190,7 +190,7 @@ const SproutStats = (() => {
     const weekLabel = p.connect.weekStart
       ? `${p.connect.weekStart} → ${p.connect.weekEnd}`
       : "—";
-    return `# Sprout Stats
+    return `# Super Mario Stats
 
 _Auto-updated ${report.generatedAt.slice(0, 16).replace("T", " ")} UTC_
 
@@ -213,7 +213,7 @@ CONNECT resets every **Monday**. APPLY resets every **midnight**.
 
 ## Trends
 
-![Sprout trends](chart.svg)
+![Super Mario trends](chart.svg)
 `;
   }
 

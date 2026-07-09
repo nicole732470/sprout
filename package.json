@@ -1,8 +1,8 @@
 {
-  "name": "sprout",
-  "productName": "Sprout",
+  "name": "super-mario",
+  "productName": "Super Mario",
   "version": "1.0.0",
-  "description": "Always-on-top desktop widget — Mario/Luigi tracks LinkedIn connects and job applications",
+  "description": "Personal desktop widget — Mario/Luigi track LinkedIn connects and job applications",
   "main": "main.js",
   "author": "Nicole",
   "scripts": {
@@ -12,8 +12,8 @@
     "install:app": "bash scripts/install-mac-app.sh"
   },
   "build": {
-    "appId": "com.nicole.sprout",
-    "productName": "Sprout",
+    "appId": "com.nicole.supermario",
+    "productName": "Super Mario",
     "directories": {
       "output": "dist"
     },
