@@ -1,6 +1,6 @@
 {
   "connects": {
-    "count": 6,
+    "count": 7,
     "weekStart": "2026-07-20"
   },
   "applications": {
@@ -121,7 +121,7 @@
     },
     {
       "date": "2026-07-20",
-      "connects": 6,
+      "connects": 7,
       "applications": 0
     }
   ]
