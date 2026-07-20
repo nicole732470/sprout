@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T05:37:53.567Z",
+  "generatedAt": "2026-07-20T20:41:43.353Z",
   "goals": {
     "connectsWeekly": 100,
     "applicationsDaily": 50
@@ -7,23 +7,23 @@
   "periods": {
     "connect": {
       "type": "weekly",
-      "weekStart": "2026-07-13",
-      "weekEnd": "07-19",
-      "count": 100,
+      "weekStart": "2026-07-20",
+      "weekEnd": "07-26",
+      "count": 1,
       "goal": 100
     },
     "apply": {
       "type": "daily",
-      "date": "2026-07-18",
-      "count": 8,
+      "date": "2026-07-20",
+      "count": 0,
       "goal": 50
     }
   },
   "summary": {
     "last7Days": {
-      "applications": 59,
-      "connectsDailyAdds": 100,
-      "avgApplicationsPerDay": "8.4"
+      "applications": 53,
+      "connectsDailyAdds": 101,
+      "avgApplicationsPerDay": "7.6"
     }
   },
   "weeklyConnects": [
@@ -33,7 +33,11 @@
     },
     {
       "weekStart": "2026-07-13",
-      "total": 100,
+      "total": 100
+    },
+    {
+      "weekStart": "2026-07-20",
+      "total": 1,
       "current": true
     }
   ],
@@ -87,6 +91,11 @@
       "date": "2026-07-18",
       "connects": 0,
       "applications": 8
+    },
+    {
+      "date": "2026-07-20",
+      "connects": 1,
+      "applications": 0
     }
   ]
 }
