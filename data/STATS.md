@@ -6,7 +6,7 @@ _Auto-updated 2026-07-24 21:09 UTC_
 
 | Track | Period | Progress |
 |-------|--------|----------|
-| **CONNECT** | Week 2026-07-20 → 07-26 | **105 / 100** |
+| **CONNECT** | Week 2026-07-20 → 07-26 | **106 / 100** |
 | **APPLY** | 2026-07-24 | **25 / 50** |
 
 CONNECT resets every **Monday**. APPLY resets every **midnight**.
@@ -16,7 +16,7 @@ CONNECT resets every **Monday**. APPLY resets every **midnight**.
 | Metric | Total |
 |--------|-------|
 | Applications | 179 |
-| Connect adds (daily) | 176 |
+| Connect adds (daily) | 177 |
 | Avg applications / day | 25.6 |
 
 ## Trends
