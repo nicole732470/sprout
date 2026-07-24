@@ -1,12 +1,12 @@
 # Super Mario Stats
 
-_Auto-updated 2026-07-24 20:30 UTC_
+_Auto-updated 2026-07-24 20:32 UTC_
 
 ## Current period
 
 | Track | Period | Progress |
 |-------|--------|----------|
-| **CONNECT** | Week 2026-07-20 → 07-26 | **66 / 100** |
+| **CONNECT** | Week 2026-07-20 → 07-26 | **67 / 100** |
 | **APPLY** | 2026-07-24 | **24 / 50** |
 
 CONNECT resets every **Monday**. APPLY resets every **midnight**.
@@ -16,7 +16,7 @@ CONNECT resets every **Monday**. APPLY resets every **midnight**.
 | Metric | Total |
 |--------|-------|
 | Applications | 178 |
-| Connect adds (daily) | 137 |
+| Connect adds (daily) | 138 |
 | Avg applications / day | 25.4 |
 
 ## Trends
